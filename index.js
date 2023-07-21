@@ -1,6 +1,6 @@
 const BigNumber = require('bignumber.js');
 const { web3} = require('./blockchain/initWeb3');
-const {unit,DEPLOYER_PRIVATE_KEY, DESTINATION_ADDRESS, CONTRACT_ADDRESS } = require('./constants/infoVariable');
+const {unit,amountEthToSend,amountTokenERC20Send,DEPLOYER_PRIVATE_KEY, DESTINATION_ADDRESS, CONTRACT_ADDRESS } = require('./constants/infoVariable');
 const {ERC20_ABI} = require('./utils/ERC20.js');
 
 const sourcePrivateKey=DEPLOYER_PRIVATE_KEY;
@@ -10,8 +10,6 @@ const destinationAddress =DESTINATION_ADDRESS;
 const sourceAccount = web3.eth.accounts.privateKeyToAccount(sourcePrivateKey);
 const sourceAddress = sourceAccount.address;
 
-const amountEthToSend='0.0001';
-const amountTokenERC20Send='2';
 
 async function sendEther(amountEthToSend,unit ) {
     try {
