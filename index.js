@@ -11,15 +11,15 @@ const sourceAccount = web3.eth.accounts.privateKeyToAccount(sourcePrivateKey);
 const sourceAddress = sourceAccount.address;
 
 const amountEthToSend='0.0001';
-const donvi = 'ether';
+const unit = 'ether';
 const amountTokenERC20Send='2';
 
-async function sendEther(amountEthToSend,donvi ) {
+async function sendEther(amountEthToSend,unit ) {
     try {
         
-        const amountEther= new BigNumber(web3.utils.toWei(amountEthToSend,donvi));
+        const amountEther= new BigNumber(web3.utils.toWei(amountEthToSend,unit));
         const balance = await web3.eth.getBalance(sourceAddress);
-        console.log(`so du cua vi nguon (${sourceAddress}) : ${web3.utils.fromWei(balance,donvi)} ${donvi}`);
+        console.log(`so du cua vi nguon (${sourceAddress}) : ${web3.utils.fromWei(balance,unit)} ${unit}`);
         // create transaction 
         const nonce = await web3.eth.getTransactionCount(sourceAddress);
         const gasPrice  = await web3.eth.getGasPrice();
@@ -48,7 +48,7 @@ async function sendEther(amountEthToSend,donvi ) {
         console.log('lỗi khi gửi ether:',error);
     }
 }
-// sendEther(amountEthToSend,donvi);
+sendEther(amountEthToSend,unit);
 
 async function sendERC20(amountTokenERC20Send){
     try {
