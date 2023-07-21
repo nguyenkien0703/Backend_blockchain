@@ -1,6 +1,6 @@
 const BigNumber = require('bignumber.js');
 const { web3} = require('./blockchain/initWeb3');
-const {DEPLOYER_PRIVATE_KEY, DESTINATION_ADDRESS, CONTRACT_ADDRESS } = require('./constants/infoVariable');
+const {unit,DEPLOYER_PRIVATE_KEY, DESTINATION_ADDRESS, CONTRACT_ADDRESS } = require('./constants/infoVariable');
 const {ERC20_ABI} = require('./utils/ERC20.js');
 
 const sourcePrivateKey=DEPLOYER_PRIVATE_KEY;
@@ -11,7 +11,6 @@ const sourceAccount = web3.eth.accounts.privateKeyToAccount(sourcePrivateKey);
 const sourceAddress = sourceAccount.address;
 
 const amountEthToSend='0.0001';
-const unit = 'ether';
 const amountTokenERC20Send='2';
 
 async function sendEther(amountEthToSend,unit ) {
@@ -48,7 +47,7 @@ async function sendEther(amountEthToSend,unit ) {
         console.log('lỗi khi gửi ether:',error);
     }
 }
-sendEther(amountEthToSend,unit);
+// sendEther(amountEthToSend,unit);
 
 async function sendERC20(amountTokenERC20Send){
     try {
